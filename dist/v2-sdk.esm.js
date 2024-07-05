@@ -22,12 +22,60 @@ var BASIS_POINTS = /*#__PURE__*/JSBI.BigInt(10000);
 var ZERO_PERCENT = /*#__PURE__*/new Percent(ZERO);
 var ONE_HUNDRED_PERCENT = /*#__PURE__*/new Percent(ONE);
 
+function _arrayLikeToArray(r, a) {
+  (null == a || a > r.length) && (a = r.length);
+  for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e];
+  return n;
+}
 function _construct(t, e, r) {
   if (_isNativeReflectConstruct()) return Reflect.construct.apply(null, arguments);
   var o = [null];
   o.push.apply(o, e);
   var p = new (t.bind.apply(t, o))();
   return r && _setPrototypeOf(p, r.prototype), p;
+}
+function _defineProperties(e, r) {
+  for (var t = 0; t < r.length; t++) {
+    var o = r[t];
+    o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o);
+  }
+}
+function _createClass(e, r, t) {
+  return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", {
+    writable: !1
+  }), e;
+}
+function _createForOfIteratorHelperLoose(r, e) {
+  var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"];
+  if (t) return (t = t.call(r)).next.bind(t);
+  if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) {
+    t && (r = t);
+    var o = 0;
+    return function () {
+      return o >= r.length ? {
+        done: !0
+      } : {
+        done: !1,
+        value: r[o++]
+      };
+    };
+  }
+  throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+function _getPrototypeOf(t) {
+  return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function (t) {
+    return t.__proto__ || Object.getPrototypeOf(t);
+  }, _getPrototypeOf(t);
+}
+function _inheritsLoose(t, o) {
+  t.prototype = Object.create(o.prototype), t.prototype.constructor = t, _setPrototypeOf(t, o);
+}
+function _isNativeFunction(t) {
+  try {
+    return -1 !== Function.toString.call(t).indexOf("[native code]");
+  } catch (n) {
+    return "function" == typeof t;
+  }
 }
 function _isNativeReflectConstruct() {
   try {
@@ -36,6 +84,11 @@ function _isNativeReflectConstruct() {
   return (_isNativeReflectConstruct = function () {
     return !!t;
   })();
+}
+function _setPrototypeOf(t, e) {
+  return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) {
+    return t.__proto__ = e, t;
+  }, _setPrototypeOf(t, e);
 }
 function _toPrimitive(t, r) {
   if ("object" != typeof t || !t) return t;
@@ -49,112 +102,36 @@ function _toPrimitive(t, r) {
 }
 function _toPropertyKey(t) {
   var i = _toPrimitive(t, "string");
-  return "symbol" == typeof i ? i : String(i);
+  return "symbol" == typeof i ? i : i + "";
 }
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
+function _unsupportedIterableToArray(r, a) {
+  if (r) {
+    if ("string" == typeof r) return _arrayLikeToArray(r, a);
+    var t = {}.toString.call(r).slice(8, -1);
+    return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0;
   }
 }
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  Object.defineProperty(Constructor, "prototype", {
-    writable: false
-  });
-  return Constructor;
-}
-function _inheritsLoose(subClass, superClass) {
-  subClass.prototype = Object.create(superClass.prototype);
-  subClass.prototype.constructor = subClass;
-  _setPrototypeOf(subClass, superClass);
-}
-function _getPrototypeOf(o) {
-  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) {
-    return o.__proto__ || Object.getPrototypeOf(o);
-  };
-  return _getPrototypeOf(o);
-}
-function _setPrototypeOf(o, p) {
-  _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
-  };
-  return _setPrototypeOf(o, p);
-}
-function _isNativeFunction(fn) {
-  try {
-    return Function.toString.call(fn).indexOf("[native code]") !== -1;
-  } catch (e) {
-    return typeof fn === "function";
-  }
-}
-function _wrapNativeSuper(Class) {
-  var _cache = typeof Map === "function" ? new Map() : undefined;
-  _wrapNativeSuper = function _wrapNativeSuper(Class) {
-    if (Class === null || !_isNativeFunction(Class)) return Class;
-    if (typeof Class !== "function") {
-      throw new TypeError("Super expression must either be null or a function");
-    }
-    if (typeof _cache !== "undefined") {
-      if (_cache.has(Class)) return _cache.get(Class);
-      _cache.set(Class, Wrapper);
+function _wrapNativeSuper(t) {
+  var r = "function" == typeof Map ? new Map() : void 0;
+  return _wrapNativeSuper = function (t) {
+    if (null === t || !_isNativeFunction(t)) return t;
+    if ("function" != typeof t) throw new TypeError("Super expression must either be null or a function");
+    if (void 0 !== r) {
+      if (r.has(t)) return r.get(t);
+      r.set(t, Wrapper);
     }
     function Wrapper() {
-      return _construct(Class, arguments, _getPrototypeOf(this).constructor);
+      return _construct(t, arguments, _getPrototypeOf(this).constructor);
     }
-    Wrapper.prototype = Object.create(Class.prototype, {
+    return Wrapper.prototype = Object.create(t.prototype, {
       constructor: {
         value: Wrapper,
-        enumerable: false,
-        writable: true,
-        configurable: true
+        enumerable: !1,
+        writable: !0,
+        configurable: !0
       }
-    });
-    return _setPrototypeOf(Wrapper, Class);
-  };
-  return _wrapNativeSuper(Class);
-}
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-  return self;
-}
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === "Object" && o.constructor) n = o.constructor.name;
-  if (n === "Map" || n === "Set") return Array.from(o);
-  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
-}
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-  for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
-  return arr2;
-}
-function _createForOfIteratorHelperLoose(o, allowArrayLike) {
-  var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"];
-  if (it) return (it = it.call(o)).next.bind(it);
-  if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") {
-    if (it) o = it;
-    var i = 0;
-    return function () {
-      if (i >= o.length) return {
-        done: true
-      };
-      return {
-        done: false,
-        value: o[i++]
-      };
-    };
-  }
-  throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+    }), _setPrototypeOf(Wrapper, t);
+  }, _wrapNativeSuper(t);
 }
 
 // see https://stackoverflow.com/a/41102306
@@ -164,15 +141,15 @@ var CAN_SET_PROTOTYPE = ('setPrototypeOf' in Object);
  * obtained by sending any amount of input.
  */
 var InsufficientReservesError = /*#__PURE__*/function (_Error) {
-  _inheritsLoose(InsufficientReservesError, _Error);
   function InsufficientReservesError() {
     var _this;
     _this = _Error.call(this) || this;
     _this.isInsufficientReservesError = true;
     _this.name = _this.constructor.name;
-    if (CAN_SET_PROTOTYPE) Object.setPrototypeOf(_assertThisInitialized(_this), (this instanceof InsufficientReservesError ? this.constructor : void 0).prototype);
+    if (CAN_SET_PROTOTYPE) Object.setPrototypeOf(_this, (this instanceof InsufficientReservesError ? this.constructor : void 0).prototype);
     return _this;
   }
+  _inheritsLoose(InsufficientReservesError, _Error);
   return InsufficientReservesError;
 }( /*#__PURE__*/_wrapNativeSuper(Error));
 /**
@@ -180,15 +157,15 @@ var InsufficientReservesError = /*#__PURE__*/function (_Error) {
  * than the price of a single unit of output after fees.
  */
 var InsufficientInputAmountError = /*#__PURE__*/function (_Error2) {
-  _inheritsLoose(InsufficientInputAmountError, _Error2);
   function InsufficientInputAmountError() {
     var _this2;
     _this2 = _Error2.call(this) || this;
     _this2.isInsufficientInputAmountError = true;
     _this2.name = _this2.constructor.name;
-    if (CAN_SET_PROTOTYPE) Object.setPrototypeOf(_assertThisInitialized(_this2), (this instanceof InsufficientInputAmountError ? this.constructor : void 0).prototype);
+    if (CAN_SET_PROTOTYPE) Object.setPrototypeOf(_this2, (this instanceof InsufficientInputAmountError ? this.constructor : void 0).prototype);
     return _this2;
   }
+  _inheritsLoose(InsufficientInputAmountError, _Error2);
   return InsufficientInputAmountError;
 }( /*#__PURE__*/_wrapNativeSuper(Error));
 
@@ -461,7 +438,7 @@ var Pair = /*#__PURE__*/function () {
       return ZERO_PERCENT;
     }
   };
-  _createClass(Pair, [{
+  return _createClass(Pair, [{
     key: "token0Price",
     get: function get() {
       var result = this.tokenAmounts[1].divide(this.tokenAmounts[0]);
@@ -502,7 +479,6 @@ var Pair = /*#__PURE__*/function () {
       return this.tokenAmounts[1];
     }
   }]);
-  return Pair;
 }();
 
 var Route = /*#__PURE__*/function () {
@@ -531,7 +507,7 @@ var Route = /*#__PURE__*/function () {
     this.input = input;
     this.output = output;
   }
-  _createClass(Route, [{
+  return _createClass(Route, [{
     key: "midPrice",
     get: function get() {
       if (this._midPrice !== null) return this._midPrice;
@@ -553,7 +529,6 @@ var Route = /*#__PURE__*/function () {
       return this.pairs[0].chainId;
     }
   }]);
-  return Route;
 }();
 
 // comparator function that allows sorting trades by their output amounts, in decreasing order, and then input amounts
