@@ -1,0 +1,16 @@
+[4:01:00 AM] [semantic-release] › ℹ  Running semantic-release version 20.1.3
+[4:01:00 AM] [semantic-release] › ✔  Loaded plugin "verifyConditions" from "@semantic-release/npm"
+[4:01:00 AM] [semantic-release] › ✔  Loaded plugin "verifyConditions" from "@semantic-release/github"
+[4:01:00 AM] [semantic-release] › ✔  Loaded plugin "verifyConditions" from "@semantic-release/exec"
+[4:01:00 AM] [semantic-release] › ✔  Loaded plugin "verifyRelease" from "@semantic-release/exec"
+[4:01:00 AM] [semantic-release] › ✔  Loaded plugin "prepare" from "@semantic-release/npm"
+[4:01:00 AM] [semantic-release] › ✔  Loaded plugin "prepare" from "@semantic-release/exec"
+[4:01:00 AM] [semantic-release] › ✔  Loaded plugin "publish" from "@semantic-release/npm"
+[4:01:00 AM] [semantic-release] › ✔  Loaded plugin "publish" from "@semantic-release/github"
+[4:01:00 AM] [semantic-release] › ✔  Loaded plugin "publish" from "@semantic-release/exec"
+[4:01:00 AM] [semantic-release] › ✔  Loaded plugin "addChannel" from "@semantic-release/npm"
+[4:01:00 AM] [semantic-release] › ✔  Loaded plugin "addChannel" from "@semantic-release/github"
+[4:01:00 AM] [semantic-release] › ✔  Loaded plugin "addChannel" from "@semantic-release/exec"
+[4:01:00 AM] [semantic-release] › ⚠  This run was not triggered in a known CI environment, running in dry-run mode.
+[4:01:04 AM] [semantic-release] › ⚠  Run automated release from branch main on repository https://github.com/Uniswap/sdks.git in dry-run mode
+[4:01:06 AM] [semantic-release] › ℹ  The local branch main is behind the remote one, therefore a new version won't be published.
